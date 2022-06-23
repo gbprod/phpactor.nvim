@@ -1,6 +1,6 @@
-local phpactor = require("phpactor")
+local command = require("phpactor.command")
 
-vim.api.nvim_create_user_command("PhpActor", phpactor.command, {
+vim.api.nvim_create_user_command("PhpActor", command.run, {
   nargs = "*",
-  complete = phpactor.complete,
+  complete = command.complete,
 })
