@@ -27,7 +27,7 @@ function command.run(args)
     return
   end
 
-  local handler = require("phpactor.handler." .. args[1])
+  local handler = require("phpactor.handler." .. args.fargs[1])
 
   local options = {}
 

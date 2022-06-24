@@ -16,7 +16,7 @@ return function()
     end
 
     trace = vim.fn.system({
-      "git",
+      config.options.install.git_bin,
       "clone",
       "git@github.com:phpactor/phpactor",
       phpactor_path:absolute(),
@@ -31,10 +31,16 @@ return function()
 
       return
     end
+  else
+    if require("phpactor.check_install")() then
+      vim.notify("PhpActor is already up-to-date", vim.log.levels.INFO, { title = "PhpActor" })
+
+      return
+    end
   end
 
   trace = vim.fn.system({
-    "git",
+    config.options.install.git_bin,
     "-C",
     phpactor_path:absolute(),
     "checkout",
@@ -51,7 +57,7 @@ return function()
   end
 
   trace = vim.fn.system({
-    "git",
+    config.options.install.git_bin,
     "-C",
     phpactor_path:absolute(),
     "pull",
@@ -70,7 +76,7 @@ return function()
   end
 
   trace = vim.fn.system({
-    "composer",
+    config.options.install.composer_bin,
     "install",
     "--optimize-autoloader",
     "--classmap-authoritative",

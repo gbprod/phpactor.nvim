@@ -33,7 +33,6 @@ function rpc.call(action, parameters, options)
       vim.log.levels.ERROR,
       { title = "PhpActor" }
     )
-    print(vim.inspect(response))
     return
   end
 
@@ -61,6 +60,7 @@ function rpc.handle_collection(parameters)
 end
 
 function rpc.handle_echo(parameters, options)
+  options = options or {}
   if options.echo_mode == "float" then
     utils.open_message_win(vim.split(parameters.message, "\n", {}))
   else
@@ -110,6 +110,10 @@ function rpc.handle_input_callback(parameters)
     end
 
     vim.ui.input(opts, function(item)
+      if nil == item then
+        return
+      end
+
       parameters.callback.parameters[input.name] = item
       rpc.call(parameters.callback.action, parameters.callback.parameters)
 
@@ -130,7 +134,6 @@ function rpc.handle_input_callback(parameters)
   end
 
   vim.notify("Don't know how to handle input_callback: " .. input.type, vim.log.levels.ERROR, { title = "PhpActor" })
-  print(vim.inspect(input))
 end
 
 function rpc.handle_close_file(parameters)
