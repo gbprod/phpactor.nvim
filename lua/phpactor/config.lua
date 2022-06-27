@@ -10,7 +10,7 @@ local default_values = {
     php_bin = "php",
     composer_bin = "composer",
     git_bin = "git",
-    check_on_startup = false,
+    check_on_startup = "none",
   },
   lspconfig = {
     enabled = true,
@@ -28,6 +28,15 @@ function config.setup(options)
 
   if nil == config.options.install.bin then
     config.options.install.bin = config.options.install.path .. "phpactor/bin/phpactor"
+  end
+
+  if not vim.tbl_contains({ "daily", "always", "none" }, config.options.install.check_on_startup) then
+    vim.notify(
+      { "Invalid value for `check_on_startup` option", "Accepted values : daily, always, none" },
+      vim.log.levels.ERROR,
+      { title = "PhpActor" }
+    )
+    config.options.install.check_on_startup = "none"
   end
 end
 

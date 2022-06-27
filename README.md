@@ -59,7 +59,7 @@ use({
     php_bin = "php",
     composer_bin = "composer",
     git_bin = "git",
-    check_on_startup = false,
+    check_on_startup = "none",
   },
   lspconfig = {
     enabled = true,
@@ -107,7 +107,8 @@ Git binary.
 
 ### `install.check_on_startup`
 
-Default: `false`
+Default: `none`  
+Accepted values: `none|daily|always`
 
 This will check if phpactor install is up-to-date on nvim startup. This could be
 slow, use wisely.
