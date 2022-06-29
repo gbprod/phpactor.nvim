@@ -39,11 +39,26 @@ function rpc.call(action, parameters, options)
   return rpc[handler](response["parameters"], options)
 end
 
-function rpc.handle_return(parameters)
-  return parameters.value
+function rpc.handle_return(parameters, options)
+  options.callback(parameters.value)
 end
 
-function rpc.handle_collection(parameters)
+function rpc.handle_return_choice(parameters, options)
+  vim.ui.select(vim.tbl_values(parameters.choices), {
+    format_item = function(item)
+      return item.name
+    end,
+  }, function(item)
+    if nil == item then
+      return
+    end
+    options.callback(item.value)
+  end)
+
+  return
+end
+
+function rpc.handle_collection(parameters, options)
   for _, action in pairs(parameters.actions) do
     local handler = string.format("handle_%s", action.name)
 
@@ -54,7 +69,7 @@ function rpc.handle_collection(parameters)
         { title = "PhpActor" }
       )
     else
-      rpc[handler](action.parameters)
+      rpc[handler](action.parameters, options)
     end
   end
 end

@@ -15,7 +15,7 @@ using [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
 
 This provides `PhpActor` command to call phpactor rpc methods:
 
-`PhpActor [class_inflect|context_menu|expand_class|generate_accessor|change_visibility|copy_class|import_class|import_missing_classes|move_class|navigate|new_class|transform|update|config|status|cache_clear]`
+`PhpActor [class_inflect | context_menu | expand_class | generate_accessor | change_visibility | copy_class | import_class | import_missing_classes | move_class | navigate | new_class | transform | update | config | status | cache_clear]`
 
 ## ⚡️ Requirements
 
@@ -132,5 +132,5 @@ Basicly, you should pass a `on_attach` function to set your mappings ;)
 - [nvim-notify](https://github.com/rcarriga/nvim-notify)
 - [dressing.nvim](https://github.com/stevearc/dressing.nvim)
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/).
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/)
 - [telescope-ui-select.nvim](https://github.com/nvim-telescope/telescope-ui-select.nvim)
