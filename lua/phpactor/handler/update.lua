@@ -18,7 +18,7 @@ return function()
     trace = vim.fn.system({
       config.options.install.git_bin,
       "clone",
-      "git@github.com:phpactor/phpactor",
+      "https://github.com/phpactor/phpactor.git",
       phpactor_path:absolute(),
     })
 
