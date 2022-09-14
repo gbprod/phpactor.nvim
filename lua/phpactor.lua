@@ -34,7 +34,7 @@ function phpactor.check_install()
   end
 
   if not require("phpactor.check_install")() then
-    vim.notify({ "PhpActor is outdated", "run `:PhpActor update`" }, vim.log.levels.INFO, { title = "PhpActor" })
+    vim.notify("PhpActor is outdated\nrun `:PhpActor update`", vim.log.levels.INFO, { title = "PhpActor" })
   end
 end
 

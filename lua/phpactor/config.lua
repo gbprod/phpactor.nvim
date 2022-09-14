@@ -32,7 +32,7 @@ function config.setup(options)
 
   if not vim.tbl_contains({ "daily", "always", "none" }, config.options.install.check_on_startup) then
     vim.notify(
-      { "Invalid value for `check_on_startup` option", "Accepted values : daily, always, none" },
+      "Invalid value for `check_on_startup` option\nAccepted values : daily, always, none",
       vim.log.levels.ERROR,
       { title = "PhpActor" }
     )

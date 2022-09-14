@@ -5,7 +5,7 @@ Lua version of [phpactor](https://github.com/phpactor/phpactor) nvim plugin.
 ## ✨ Features
 
 It allows to use phpactor commands using new neovim lua api. It uses `vim.ui`
-and `vim.notify` to provide modern UI using plugins like [nvim-notify](https://github.com/rcarriga/nvim-notify)
+and `vim.notify` to provide modern UI using plugins like [nvim-notify](https://github.com/rcarriga/nvim-notify), [notifier.nvim](https://github.com/vigoux/notifier.nvim),
 [dressing.nvim](https://github.com/stevearc/dressing.nvim) or [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
 
 I've only implemented commands that are not available using LSP Code Actions.

@@ -7,10 +7,10 @@ return function()
   local trace
 
   if not phpactor_path:exists() then
-    vim.notify({ "Phpactor install not found, clone repo" }, vim.log.levels.INFO, { title = "PhpActor" })
+    vim.notify("Phpactor install not found, clone repo", vim.log.levels.INFO, { title = "PhpActor" })
 
     if not install_path:mkdir({ parents = true }) then
-      vim.notify({ "Error while installing phpactor : mkdir failed" }, vim.log.levels.ERROR, { title = "PhpActor" })
+      vim.notify("Error while installing phpactor : mkdir failed", vim.log.levels.ERROR, { title = "PhpActor" })
 
       return
     end
@@ -24,7 +24,7 @@ return function()
 
     if vim.v.shell_error > 0 then
       vim.notify(
-        vim.tbl_extend("keep", { "Error while installing phpactor : clone failed", "" }, vim.split(trace, "\n")),
+        "Error while installing phpactor : clone failed\n\n" .. trace,
         vim.log.levels.ERROR,
         { title = "PhpActor" }
       )
@@ -49,7 +49,7 @@ return function()
 
   if vim.v.shell_error > 0 then
     vim.notify(
-      vim.tbl_extend("keep", { "Error while updating phpactor : checkout failed", "" }, vim.split(trace, "\n")),
+      "Error while updating phpactor : checkout failed\n\n" .. trace,
       vim.log.levels.ERROR,
       { title = "PhpActor" }
     )
@@ -66,11 +66,7 @@ return function()
   })
 
   if vim.v.shell_error > 0 then
-    vim.notify(
-      vim.tbl_extend("keep", { "Error while updating phpactor : pull failed", "" }, vim.split(trace, "\n")),
-      vim.log.levels.ERROR,
-      { title = "PhpActor" }
-    )
+    vim.notify("Error while updating phpactor : pull failed\n\n" .. trace, vim.log.levels.ERROR, { title = "PhpActor" })
 
     return
   end
@@ -86,7 +82,7 @@ return function()
 
   if vim.v.shell_error > 0 then
     vim.notify(
-      vim.tbl_extend("keep", { "Error while updating phpactor : composer failed", "" }, vim.split(trace, "\n")),
+      "Error while updating phpactor : composer failed\n\n" .. trace,
       vim.log.levels.ERROR,
       { title = "PhpActor" }
     )
