@@ -1,41 +1,23 @@
+local phpactor = require("phpactor")
+
 local command = {}
 
 function command.complete()
-  return {
-    "cache_clear",
-    "class_inflect",
-    "config",
-    "context_menu",
-    "copy_class",
-    "expand_class",
-    "generate_accessor",
-    "change_visibility",
-    "import_class",
-    "import_missing_classes",
-    "move_class",
-    "navigate",
-    "new_class",
-    "status",
-    "transform",
-    "update",
-  }
+  return phpactor.AVAILABLE_RPC
 end
 
 function command.run(args)
-  if not vim.tbl_contains(command.complete(), args.fargs[1]) then
-    vim.notify("Invalid command", vim.log.levels.INFO, {})
-    return
+  if not vim.tbl_contains(phpactor.AVAILABLE_RPC, args.fargs[1]) then
+    args.fargs[1] = "context_menu"
   end
-
-  local handler = require("phpactor.handler." .. args.fargs[1])
 
   local options = {}
 
-  if "transform" == args[1] and nil ~= args[2] then
-    options.transform = args[2]
+  if "transform" == args.fargs[1] and nil ~= args.fargs[2] then
+    options.transform = args.fargs[2]
   end
 
-  handler(options)
+  phpactor.rpc(args.fargs[1], options)
 end
 
 return command

@@ -17,6 +17,9 @@ This provides `PhpActor` command to call phpactor rpc methods:
 
 `PhpActor [class_inflect | context_menu | expand_class | generate_accessor | change_visibility | copy_class | import_class | import_missing_classes | move_class | navigate | new_class | transform | update | config | status | cache_clear]`
 
+You can also use the lua function `require('phpactor').rpc(name, options)`.
+Eg: `:lua require('phpactor').rpc('context_menu', {})`
+
 ## ⚡️ Requirements
 
 - Neovim >= 0.7.0
