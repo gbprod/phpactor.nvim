@@ -91,14 +91,8 @@ function rpc.handle_update_file_source(parameters)
   for _, edit in pairs(parameters.edits) do
     local bufnr = vim.fn.bufadd(parameters.path)
 
-    vim.api.nvim_buf_set_text(
-      bufnr,
-      edit.start.line,
-      edit.start.character,
-      edit["end"].line,
-      edit["end"].character,
-      vim.split(edit.text, "\n", {})
-    )
+    -- @see https://github.com/phpactor/phpactor/blob/master/autoload/phpactor.vim#L459
+    vim.api.nvim_buf_set_lines(bufnr, edit.start.line, edit["end"].line, false, vim.split(edit.text, "\n", {}))
   end
 end
 
