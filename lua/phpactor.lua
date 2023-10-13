@@ -19,6 +19,12 @@ phpactor.AVAILABLE_RPC = {
   "status",
   "transform",
   "update",
+  "lsp/status",
+  "lsp/reindex",
+  "lsp/debug/config",
+  "lsp/debug/workspace",
+  "blackfire/start",
+  "blackfire/finish",
 }
 
 function phpactor.setup(options)

@@ -15,7 +15,32 @@ using [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
 
 This provides `PhpActor` command to call phpactor rpc methods:
 
-`PhpActor [class_inflect | context_menu | expand_class | generate_accessor | change_visibility | copy_class | import_class | import_missing_classes | move_class | navigate | new_class | transform | update | config | status | cache_clear]`
+```
+PhpActor [
+  class_inflect
+  context_menu
+  expand_class
+  generate_accessor
+  change_visibility
+  copy_class
+  import_class
+  import_missing_classes
+  move_class
+  navigate
+  new_class
+  transform
+  update
+  config
+  status
+  cache_clear
+  lsp/status
+  lsp/reindex
+  lsp/debug/config
+  lsp/debug/config
+  blackfire/start
+  blackfire/stop
+]
+```
 
 You can also use the lua function `require('phpactor').rpc(name, options)`.
 Eg: `:lua require('phpactor').rpc('context_menu', {})`
