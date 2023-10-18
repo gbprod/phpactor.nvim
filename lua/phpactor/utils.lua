@@ -21,12 +21,10 @@ function utils.path(bufnr)
 end
 
 function utils.get_root_dir()
-  local buf_clients = vim.lsp.get_active_clients()
+  local buf_clients = vim.lsp.get_clients({ name = "phpactor", bufnr = 0 })
 
-  for _, client in pairs(buf_clients) do
-    if client.config.name == "phpactor" then
-      return client.config.root_dir
-    end
+  if #buf_clients > 0 then
+    return buf_clients[1].config.root_dir
   end
 
   return vim.fn.getcwd()
