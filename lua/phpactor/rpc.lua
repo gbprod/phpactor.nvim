@@ -54,8 +54,6 @@ function rpc.handle_return_choice(parameters, options)
     end
     options.callback(item.value)
   end)
-
-  return
 end
 
 function rpc.handle_collection(parameters, options)
@@ -99,7 +97,6 @@ function rpc.handle_update_file_source(parameters)
       false,
       vim.split(edit.text:gsub("\n$", ""), "\n", {})
     )
-    -- return
   end
 end
 
@@ -132,19 +129,20 @@ function rpc.handle_input_callback(parameters)
 
       parameters.callback.parameters[input.name] = item
       rpc.call(parameters.callback.action, parameters.callback.parameters)
-
-      return
     end)
 
     return
   end
 
   if "confirm" == input.type then
-    local answer = vim.fn.confirm(input.parameters.label, table.concat({ "Yes", "No" }, "\n"), "Yes", "Question")
-    if 1 == answer then
+    vim.ui.select({ "Yes", "No" }, { prompt = input.parameters.label }, function(item)
+      if nil == item or "No" == item then
+        return
+      end
+
       parameters.callback.parameters[input.name] = true
       rpc.call(parameters.callback.action, parameters.callback.parameters)
-    end
+    end)
 
     return
   end
