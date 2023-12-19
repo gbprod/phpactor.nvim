@@ -1,3 +1,4 @@
+local config = require("phpactor.config")
 local utils = {}
 
 function utils.offset(winnr, bufnr)
@@ -15,6 +16,10 @@ function utils.source(bufnr)
 end
 
 function utils.path(bufnr)
+  if config.options.utils.pathFn ~= nil then
+    return config.options.utils.pathFn(bufnr)
+  end
+
   bufnr = bufnr or 0
 
   return vim.api.nvim_buf_get_name(bufnr)

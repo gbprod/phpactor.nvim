@@ -16,6 +16,9 @@ local default_values = {
     enabled = true,
     options = {},
   },
+  utils = {
+    pathFn = nil
+  },
 }
 
 function config.setup(options)
