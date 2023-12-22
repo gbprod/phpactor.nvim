@@ -13,11 +13,20 @@ function command.run(args)
 
   local options = {}
 
-  if "transform" == args.fargs[1] and nil ~= args.fargs[2] then
-    options.transform = args.fargs[2]
+  local do_run = function(cmd, ...)
+    for _, argument in ipairs({ ... }) do
+      if argument:find("=", 1) ~= nil then
+        local param = vim.split(argument, "=")
+        local key = table.remove(param, 1)
+        param = table.concat(param, "=")
+        options[key] = param
+      end
+    end
+
+    phpactor.rpc(cmd, options)
   end
 
-  phpactor.rpc(args.fargs[1], options)
+  do_run(table.unpack(args.fargs))
 end
 
 return command

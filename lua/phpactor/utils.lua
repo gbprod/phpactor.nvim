@@ -17,11 +17,37 @@ end
 function utils.path(bufnr)
   bufnr = bufnr or 0
 
-  return vim.api.nvim_buf_get_name(bufnr)
+  -- regular file
+  if vim.api.nvim_get_option_value("buftype", { buf = bufnr }) == "" then
+    return vim.api.nvim_buf_get_name(bufnr) or vim.loop.cwd()
+  end
+
+  -- neo-tree
+  if vim.api.nvim_get_option_value("filetype", { buf = bufnr }) == "neo-tree" then
+    return utils.neotree_get_current_filepath()
+  end
+
+  return vim.loop.cwd()
+end
+
+function utils.neotree_get_current_filepath()
+  local state = require("neo-tree.sources.manager").get_state("filesystem")
+
+  if state.tree == nil then
+    state = require("neo-tree.sources.manager").get_state("filesystem", nil, vim.api.nvim_get_current_win())
+  end
+
+  return state.tree:get_node().path
+end
+
+function utils.folder(bufnr)
+  bufnr = bufnr or 0
+
+  return utils.path(bufnr):match("(.*[/\\])")
 end
 
 function utils.get_root_dir()
-  local buf_clients = vim.lsp.get_active_clients({ name = "phpactor", bufnr = 0 })
+  local buf_clients = vim.lsp.get_clients({ name = "phpactor", bufnr = 0 })
 
   if #buf_clients > 0 then
     return buf_clients[1].config.root_dir
