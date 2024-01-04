@@ -119,7 +119,7 @@ function rpc.handle_input_callback(parameters)
     local opts = { prompt = input.parameters.label, default = input.parameters.default }
     if "file" == input.parameters.type then
       opts.completion = "file"
-      opts.default = utils.path()
+      opts.default = input.parameters.default
     end
 
     vim.ui.input(opts, function(item)

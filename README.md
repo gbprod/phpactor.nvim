@@ -154,6 +154,18 @@ Default: `{}`
 This is here where you can define options to pass to [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/).
 Basicly, you should pass a `on_attach` function to set your mappings ;)
 
+## 🤝 Integration
+
+<details>
+<summary><b>nvim-neo-tree/neo-tree.nvim</b></summary>
+
+This plugin works out-of-the-box with [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim).
+If you execute a `PhpActor navigate` command on a file/folder in neo-tree, it will use this file as source.
+
+Eg. If you run `PhpActor new_class` in a neo-tree buffer, this will create a new class inside the folder you are in.
+
+</details>
+
 ## 🎉 Credits
 
 - [phpactor](https://github.com/phpactor/phpactor) for this awesome lsp serveur
