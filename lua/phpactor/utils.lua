@@ -47,7 +47,8 @@ function utils.folder(bufnr)
 end
 
 function utils.get_root_dir()
-  local buf_clients = vim.lsp.get_clients({ name = "phpactor", bufnr = 0 })
+  local buf_clients = vim.fn.has("nvim-0.10") == 1 and vim.lsp.get_clients({ name = "phpactor", bufnr = 0 })
+    or vim.lsp.get_active_clients({ name = "phpactor", bufnr = 0 })
 
   if #buf_clients > 0 then
     return buf_clients[1].config.root_dir
