@@ -1,7 +1,7 @@
 local rpc = require("phpactor.rpc")
 local utils = require("phpactor.utils")
 
-return function()
+return function(options)
   rpc.call("change_visibility", {
     offset = utils.offset(),
     source = utils.source(),
