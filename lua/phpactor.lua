@@ -19,6 +19,7 @@ phpactor.AVAILABLE_RPC = {
   "status",
   "transform",
   "update",
+  "copy_fcqn",
   "lsp/status",
   "lsp/reindex",
   "lsp/debug/config",

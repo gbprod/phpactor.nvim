@@ -33,6 +33,7 @@ PhpActor [
   config
   status
   cache_clear
+  copy_fcqn
   lsp/status
   lsp/reindex
   lsp/debug/config
