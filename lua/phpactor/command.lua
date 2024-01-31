@@ -26,7 +26,8 @@ function command.run(args)
     phpactor.rpc(cmd, options)
   end
 
-  do_run(table.unpack(args.fargs))
+  local table_unpack = table.unpack or unpack
+  do_run(table_unpack(args.fargs))
 end
 
 return command
