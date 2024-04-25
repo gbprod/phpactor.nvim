@@ -54,25 +54,25 @@ Eg: `:lua require('phpactor').rpc('context_menu', {})`
 
 Install the plugin with your preferred package manager:
 
-### [packer](https://github.com/wbthomason/packer.nvim)
+### [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
 -- Lua
-use({
-  "gbprod/phpactor.nvim",
-  run = require("phpactor.handler.update"), -- To install/update phpactor when installing this plugin
-  requires = {
-    "nvim-lua/plenary.nvim", -- required to update phpactor
-    "neovim/nvim-lspconfig" -- required to automaticly register lsp serveur
+{
+  {
+    "gbprod/phpactor.nvim",
+    build = function()
+      require("phpactor.handler.update")()
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "neovim/nvim-lspconfig"
+    },
+    opts = {
+      -- you're options coes here
+    },
   },
-  config = function()
-    require("phpactor").setup({
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    })
-  end
-})
+}
 ```
 
 ## ⚙️ Configuration
