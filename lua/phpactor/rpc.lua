@@ -10,7 +10,7 @@ function rpc.call(action, parameters, options)
   local workspace_dir = utils.get_root_dir()
 
   local cmd = string.format(
-    "%s %s rpc --working-dir=%s",
+    '%s %s rpc --working-dir "%s"',
     config.options.install.php_bin,
     config.options.install.bin,
     workspace_dir
