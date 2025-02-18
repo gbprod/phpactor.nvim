@@ -30,7 +30,11 @@ function M.setup()
   M.load("nvim-lua/plenary.nvim")
   M.load("neovim/nvim-lspconfig")
 
-  require("phpactor").setup()
+  require("phpactor").setup({
+    install = {
+      confirm = false,
+    },
+  })
 end
 
 M.setup()

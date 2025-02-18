@@ -61,15 +61,15 @@ Install the plugin with your preferred package manager:
 {
   {
     "gbprod/phpactor.nvim",
-    build = function()
-      require("phpactor.handler.update")()
-    end,
+    ft = "php",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "neovim/nvim-lspconfig"
+      "neovim/nvim-lspconfig",
+      -- If the update/install notification doesn't show properly,
+      -- you should also add here UI plugins like "folke/noice.nvim" or "stevearc/dressing.nvim"
     },
     opts = {
-      -- you're options coes here
+      -- you're options goes here
     },
   },
 }
@@ -139,8 +139,14 @@ Git binary.
 Default: `none`  
 Accepted values: `none|daily|always`
 
-This will check if phpactor install is up-to-date on nvim startup. This could be
-slow, use wisely.
+This will check if phpactor install is up-to-date when the plugin is loaded.  
+This could be slow, use wisely.
+
+### install.confirm
+
+Default: `true`
+
+If true, will ask for confirmation before installing/updating phpactor.
 
 ### `lspconfig.enabled`
 

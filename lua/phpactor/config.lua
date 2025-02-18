@@ -11,6 +11,7 @@ local default_values = {
     composer_bin = "composer",
     git_bin = "git",
     check_on_startup = "none",
+    confirm = true,
   },
   lspconfig = {
     enabled = true,

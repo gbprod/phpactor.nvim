@@ -4,6 +4,10 @@ local Path = require("plenary.path")
 return function()
   local phpactor_path = Path:new(config.options.install.path .. "phpactor/")
 
+  if not phpactor_path:exists() then
+    return false
+  end
+
   vim.fn.system({
     config.options.install.git_bin,
     "-C",

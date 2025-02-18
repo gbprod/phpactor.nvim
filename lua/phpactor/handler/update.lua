@@ -32,7 +32,7 @@ return function()
       return
     end
   else
-    if require("phpactor.check_install")() then
+    if require("phpactor.check_uptodate")() then
       vim.notify("PhpActor is already up-to-date", vim.log.levels.INFO, { title = "PhpActor" })
 
       return
