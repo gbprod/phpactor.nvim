@@ -34,12 +34,28 @@ function phpactor.setup(options)
   vim.schedule(phpactor.check_install)
 
   if config.options.lspconfig.enabled then
-    require("lspconfig").phpactor.setup(vim.tbl_deep_extend("force", {
-      cmd = {
-        config.options.install.bin,
-        "language-server",
-      },
-    }, config.options.lspconfig.options))
+    if vim.version().major == 0 and vim.version().minor < 11 then
+      vim.notify(
+        "phpactor.nvim requires Neovim 0.11 or higher. Please upgrade your Neovim version.",
+        vim.log.levels.WARN,
+        { title = "PhpActor" }
+      )
+      return
+    end
+
+    vim.lsp.config(
+      "phpactor",
+      vim.tbl_deep_extend("force", {
+        cmd = {
+          config.options.install.bin,
+          "language-server",
+        },
+        filetypes = { "php" },
+        root_markers = { "composer.json", ".phpactor.json", ".phpactor.yml", ".git" },
+        workspace_required = true,
+      }, config.options.lspconfig.options)
+    )
+    vim.lsp.enable("phpactor")
   end
 end
 

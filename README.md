@@ -1,17 +1,16 @@
 # 🐘 phpactor.nvim
 
-Lua version of [phpactor](https://github.com/phpactor/phpactor) nvim plugin.
+Lua version of [phpactor](https://github.com/phpactor/phpactor) Neovim plugin.
 
 ## ✨ Features
 
 It allows to use phpactor commands using new neovim lua api. It uses `vim.ui`
-and `vim.notify` to provide modern UI using plugins like [nvim-notify](https://github.com/rcarriga/nvim-notify), [notifier.nvim](https://github.com/vigoux/notifier.nvim),
-[dressing.nvim](https://github.com/stevearc/dressing.nvim) or [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim).
+and `vim.notify` to provide modern UI.
 
 I've only implemented commands that are not available using LSP Code Actions.
 
-It also automaticly install, update and configure [phpactor](https://github.com/phpactor/phpactor)
-using [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
+It also automaticly install, update and configure
+[phpactor](https://github.com/phpactor/phpactor) LSP server.
 
 This provides `PhpActor` command to call phpactor rpc methods:
 
@@ -48,7 +47,7 @@ Eg: `:lua require('phpactor').rpc('context_menu', {})`
 
 ## ⚡️ Requirements
 
-- Neovim >= 0.7.0
+- Neovim >= 0.11.0
 
 ## 📦 Installation
 
@@ -64,7 +63,6 @@ Install the plugin with your preferred package manager:
     ft = "php",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "neovim/nvim-lspconfig",
       -- If the update/install notification doesn't show properly,
       -- you should also add here UI plugins like "folke/noice.nvim" or "stevearc/dressing.nvim"
     },
@@ -152,13 +150,13 @@ If true, will ask for confirmation before installing/updating phpactor.
 
 Default: `true`
 
-Does `phpactor.nvim` should configure lsp server using [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/).
+Does `phpactor.nvim` should configure lsp server.
 
 ### `lspconfig.options`
 
 Default: `{}`
 
-This is here where you can define options to pass to [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/).
+This is here where you can define options to pass to Neovim LSP config.
 Basicly, you should pass a `on_attach` function to set your mappings ;)
 
 ## 🤝 Integration
@@ -175,9 +173,4 @@ Eg. If you run `PhpActor new_class` in a neo-tree buffer, this will create a new
 
 ## 🎉 Credits
 
-- [phpactor](https://github.com/phpactor/phpactor) for this awesome lsp serveur
-- [nvim-notify](https://github.com/rcarriga/nvim-notify)
-- [dressing.nvim](https://github.com/stevearc/dressing.nvim)
-- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig/)
-- [telescope-ui-select.nvim](https://github.com/nvim-telescope/telescope-ui-select.nvim)
+- [phpactor](https://github.com/phpactor/phpactor) for this awesome LSP server.
