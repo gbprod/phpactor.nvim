@@ -9,7 +9,7 @@ and `vim.notify` to provide modern UI.
 
 I've only implemented commands that are not available using LSP Code Actions.
 
-It also automaticly install, update and configure
+It also automatically install, update and configure
 [phpactor](https://github.com/phpactor/phpactor) LSP server.
 
 This provides `PhpActor` command to call phpactor rpc methods:
