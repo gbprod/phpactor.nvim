@@ -157,7 +157,7 @@ Does `phpactor.nvim` should configure lsp server.
 Default: `{}`
 
 This is here where you can define options to pass to Neovim LSP config.
-Basicly, you should pass a `on_attach` function to set your mappings ;)
+Basically, you should pass a `on_attach` function to set your mappings ;)
 
 ## 🤝 Integration
 
