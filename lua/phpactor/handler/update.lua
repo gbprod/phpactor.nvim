@@ -1,6 +1,15 @@
 local config = require("phpactor.config")
 
 return function()
+  local network_status = os.execute("ping -c 2 8.8.8.8 > /dev/null 2>&1")
+  if network_status ~= 0 then
+    vim.notify("Network is not reachable, cannot update Phpactor", vim.log.levels.ERROR, {
+      title = "Phpactor",
+    })
+
+    return
+  end
+
   local Path = require("plenary.path")
   local install_path = Path:new(config.options.install.path)
   local phpactor_path = Path:new(config.options.install.path .. "phpactor/")
